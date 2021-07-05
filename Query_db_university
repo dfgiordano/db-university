@@ -1,0 +1,41 @@
+1. 
+    SELECT *
+    FROM `students`
+    where `date_of_birth` between '1990-01-01' and '1990-12-31'  
+    ORDER BY `date_of_birth` ASC;
+2.
+    SELECT * 
+    FROM `courses`
+    WHERE `cfu` > 10  
+    ORDER BY `cfu`  ASC;
+3. 
+    SELECT * 
+    FROM `students` 
+    WHERE `date_of_birth` < '1991-07-05'
+    ORDER BY `date_of_birth` DESC;
+4
+    SELECT * 
+    FROM `courses`
+    WHERE `period` = 'I semestre' AND `year` = 1
+    ORDER BY `name` ASC;
+5
+    SELECT * 
+    FROM `exams`
+    WHERE `date` = '2020-06-20' AND `hour` >= '14:00:00'  
+    ORDER BY `hour` ASC;
+6.
+    SELECT * 
+    FROM `degrees`
+    WHERE `name` LIKE 'Corso di Laurea Magistrale%'  
+    ORDER BY `name` ASC;
+7.  
+    SELECT * 
+    FROM `departments`
+    ORDER BY `name`;
+8.
+    SELECT * 
+    FROM `teachers`  
+    WHERE`phone`  IS NULL
+    ORDER BY `name`,`surname` ASC;
+
+    
