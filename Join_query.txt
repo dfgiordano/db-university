@@ -1,0 +1,52 @@
+1.
+    SELECT `degrees`.`name` AS `degree_name`,`students`.name,`students`.`surname`,`students`.`registration_number`
+    FROM `degrees`
+    INNER JOIN `students`
+    ON `students`.`degree_id` = `degrees`.`id`
+    WHERE `degrees`.`name` = "Corso di Laurea in Economia"  
+    ORDER BY `students`.`registration_number`  ASC;
+2.
+    SELECT `departments`.`name` AS `department`, `departments`.`head_of_department`, `degrees`.`name` AS `cours_name`, `degrees`.`level`
+    FROM `departments`
+    INNER JOIN `degrees`
+    ON `degrees`.`department_id` = `departments`.`id`
+    WHERE `departments`.`name` = "Dipartimento di Neuroscienze" ;
+3.
+    SELECT  `teachers`.`name` AS `teacher_name` , `teachers`.`surname` AS `teacher_surname`, `courses`.name AS `cours_name` , `courses`.`description`
+    FROM `teachers`
+    INNER JOIN `course_teacher`
+    ON `teachers`.`id` = `course_teacher`.`teacher_id`
+    INNER JOIN `courses`
+    ON `course_teacher`.`course_id` = `courses`.`id`
+    WHERE `teachers`.`name` = "Fulvio" AND `teachers`.`surname` = "Amato" ;
+4.
+    SELECT `students`.`name` AS `student_name` , `students`.`surname` AS `student_surname` , `students`.`registration_number` , `departments`.`name` AS `department_name`, `degrees`.`name` , `degrees`.`level`
+    FROM `students`
+    INNER JOIN `degrees`
+    ON `students`.`degree_id` = `degrees`.`id`
+    INNER JOIN `departments`
+    ON `degrees`.`department_id` = `departments`.`id`  
+    ORDER BY `student_name`,`student_surname` ASC ;
+5.
+    SELECT `degrees`.`name` AS `degree`, `teachers`.`name` AS `teacher_name`, `teachers`.`surname` AS `teacher_surname`, `courses`.`name` AS `cours_name`, `courses`.`description`
+    FROM `degrees`
+    INNER JOIN `courses` 
+    ON `degrees`.`id` = `courses`.`degree_id`
+    INNER JOIN `course_teacher`
+    ON `courses`.`id` = `course_teacher`.`course_id`
+    INNER JOIN `teachers`
+    ON `course_teacher`.`teacher_id` = `teachers`.`id`  
+    ORDER BY `degree` ASC ;
+6.
+    SELECT DISTINCT `departments`.`name` AS `departments`,`teachers`.`name` AS `teacher_name`, `teachers`.`surname` AS `teacher_surname`
+    FROM `departments`
+    INNER JOIN `degrees`
+    ON `departments`.`id` = `degrees`.`department_id`
+    INNER JOIN `courses`
+    ON `degrees`.`id` = `courses`.`degree_id`
+    INNER JOIN `course_teacher`
+    ON `courses`.`id` = `course_teacher`.`course_id`
+    INNER JOIN `teachers`
+    ON `course_teacher`.`teacher_id` = `teachers`.`id`
+    WHERE `departments`.`name` = "Dipartimento di Matematica"  
+    ORDER BY `teacher_name`, `teacher_surname` ASC;

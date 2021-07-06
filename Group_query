@@ -1,0 +1,26 @@
+1.
+    SELECT COUNT(`id`) AS `enrolled`, YEAR(`students`.`enrolment_date`) AS `year`
+    FROM `students`
+    GROUP BY `year` ;
+2. 
+    SELECT COUNT(*) ,`teachers`.`office_address`
+    FROM `teachers`
+    GROUP BY `teachers`.`office_address`  
+    ORDER BY `teachers`.`office_address`  ASC ;
+3.
+    SELECT  `courses`.`name`,AVG(`exam_student`.`vote`) AS `avg_vote`
+    FROM `exams`
+    INNER JOIN `exam_student`
+    ON `exams`.`id` = `exam_student`.`exam_id`
+    INNER JOIN `courses`
+    ON `exams`.`course_id` = `courses`.`id`
+    GROUP BY `courses`.`name`  
+    ORDER BY `avg_vote`  DESC ;
+4. 
+    SELECT COUNT(`courses`.`name`) AS `numbers_of_courses` , `departments`.`name`
+    FROM `departments`
+    INNER JOIN `degrees`
+    ON `departments`.`id` = `degrees`.`department_id`
+    INNER JOIN `courses`
+    ON `degrees`.`id` = `courses`.`degree_id`
+    GROUP BY `departments`.`name` ;
